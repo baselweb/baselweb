@@ -6,13 +6,7 @@
     <title>Unique Vibes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .animated-text {
-            font-family: 'Times New Roman', Times, serif;
-            opacity: 0;
-            animation: fadeIn 3s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
+        @keyframes fadeInLetter {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
@@ -21,22 +15,24 @@
             height: 100%;
             margin: 0;
             overflow: hidden;
-        }
-
-        body {
-            background-color: rgb(254, 254, 254);
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.5s ease-in-out;
         }
 
         .dark-mode {
             background-color: rgb(24, 24, 24);
             color: white;
         }
+
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            font-family: 'Times New Roman', Times, serif;
+            transition: color 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="flex flex-col items-center justify-center h-full p-4 text-black dark:text-white">
-    <h1 id="dynamic-text" class="animated-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
-        
+    <h1 id="dynamic-text" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
     </h1>
 
     <script>
@@ -50,40 +46,75 @@
             "Hästi, sa oled natuke teistsugune...", "Bun, ești puțin diferit...", "Thik hai, aap thode alag hain...", 
             "Tika, ko e tokolahi kehe koe...", "Evidentment, ets una mica diferent...", "Görünüşe göre biraz farklısınız...", 
             "Iva, int xi ftit differenti...", "Greit, du er litt annerledes...", "Kuhle, unguyehluka kancane...", 
-            "Wana, u uko bitandukanye...", "Vabè, tu sì nu poco diverso...", "Ačiū, jūs esate šiek tiek kitoks...",
+            "Wana, u uko bitandukanye...", "Vabè, tu sì nu poco diverso...", "Ačiū, jūs esate šiek tiek kitoks...", 
             "Tama, ikaw ay medyo naiiba...", "Yebo, wena uhlukile kancane...", "Baik, anda sedikit berbeda...", 
             "Ach, tha thu beagan eadar-dhealaichte...", "Ia, e te itiiti ese...", "D'accordo, sei un po' diverso...", 
             "Okay, du bist en bësse anescht...", "Labi, tu esi nedaudz atšķirīgs...", "Карашо, ты немножко другой...", 
             "Bon, ou se yon ti kras diferan...", "Oke, kamu sedikit berbeda...", "Хорошо, ты немного другой...", 
             "بله، شما کمی متفاوت هستید...", "Jo, du er lidt anderledes...", "Ovviamente, sei un po' diverso...", 
             "いいえ、あなたは少し異なります...", "Nie, jesteś trochę inny...", "Ka pai, he itiiti rerekē koe...", 
-            "Bien sûr, tu es un peu différent...", "Sim, você é um pouco diferente..."
+            "Bien sûr, tu es un peu différent...", "Sim, você é um pouco diferente...", "Ты немного не такой...", 
+            "Mokhoa o itseng, o fapane hanyane...", "Ngempela, uyahlukahluka kancane...", "Đúng vậy, bạn hơi khác...", 
+            "ఇది నిజం, మీరు కొంచెం భిన్నంగా ఉన్నారు...", "Ceart go leor, tá tú rud beag difriúil...", 
+            "Evet, biraz farklısın...", "Da, vi ste malo drugačiji...", "Oo, ikaw ay medyo kakaiba...", 
+            "Benar, kamu sedikit berbeda...", "Haan, aap thode alag ho...", "Ne, vi estas iom malsama...", 
+            "Ano, ste trochu iní...", "Ndio, wewe ni tofauti kidogo...", "Eeh, uko tofauti kidogo...", 
+            "Tak, jesteś trochę inny...", "Haan, tusi thode wakhre ho...", "Да, ты немного другой...", 
+            "Jes, vi estas iom malsama...", "Ano, vy ste trochu iný...", "Nawa, iyẹn jẹ diẹ yàtọ̀...", 
+            "Evet, siz biraz farklısınız...", "Nee, jy is 'n bietjie anders...", "Ndio, wewe ni tofauti kidogo...", 
+            "Oke, sampeyan rada beda...", "Haan, aap thode alag hain...", "Haa, waxoogaa waad ka duwan tahay...", 
+            "Ha, bạn hơi khác một chút...", "نعم، أنت مختلف قليلاً...", "Oui, tu es un peu différent..."
         ];
 
         function getRandomPhrase() {
             return phrases[Math.floor(Math.random() * phrases.length)];
         }
 
-        document.getElementById("dynamic-text").textContent = getRandomPhrase();
+        function animateText() {
+            const phrase = getRandomPhrase();
+            const textContainer = document.getElementById("dynamic-text");
+            textContainer.innerHTML = "";
+
+            phrase.split('').forEach((char, index) => {
+                const span = document.createElement("span");
+                span.textContent = char;
+                span.classList.add("letter");
+                
+                setTimeout(() => {
+                    const color = getRandomColor();
+                    span.style.opacity = 1;
+                    span.style.color = color;
+                    document.body.style.backgroundColor = color;
+                }, index * 150);
+                
+                textContainer.appendChild(span);
+            });
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
         function applyDarkMode() {
             const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            if (darkModeQuery.matches) {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-            }
-
-            darkModeQuery.addEventListener('change', (e) => {
-                if (e.matches) {
+            function updateMode() {
+                if (darkModeQuery.matches) {
                     document.body.classList.add('dark-mode');
                 } else {
                     document.body.classList.remove('dark-mode');
                 }
-            });
+            }
+            darkModeQuery.addEventListener('change', updateMode);
+            updateMode();
         }
 
         applyDarkMode();
+        animateText();
     </script>
 </body>
 </html>
