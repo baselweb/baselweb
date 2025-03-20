@@ -2,88 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Unique Vibes</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .animated-text {
-            font-family: 'Times New Roman', Times, serif;
-            opacity: 0;
-            animation: fadeIn 3s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        body, html {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        body {
-            background-color: rgb(254, 254, 254);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .dark-mode {
-            background-color: rgb(24, 24, 24);
-            color: white;
-        }
-    </style>
-</head>
-<body class="flex flex-col items-center justify-center h-full p-4 text-black dark:text-white">
-    <h1 id="dynamic-text" class="animated-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center">
-        
-    </h1>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
     <script>
-        const phrases = [
-            "Ну, ви трохи інші...", "Bueno, eres un poco diferente...", "Eh bien, vous êtes un peu différent...", 
-            "Nun, du bist ein bisschen anders...", "Bene, sei un po' diverso...", "さて、あなたは少し違います...", 
-            "Ну, ты немного другой...", "Bem, você é um pouco diferente...", "好吧，你有点不同...", 
-            "خوب، شما کمی متفاوت هستید...", "No, vi estas iom malsama...", "Dobře, jsi trochu jiný...", 
-            "Jó, egy kicsit más vagy...", "Dobrze, jesteś trochę inny...", "Vel, du er litt annerledes...", 
-            "Tja, du är lite annorlunda...", "Terviseks, sa oled natuke teistsugune...", "Labi, tu esi mazliet citādāks...", 
-            "Hästi, sa oled natuke teistsugune...", "Bun, ești puțin diferit...", "Thik hai, aap thode alag hain...", 
-            "Tika, ko e tokolahi kehe koe...", "Evidentment, ets una mica diferent...", "Görünüşe göre biraz farklısınız...", 
-            "Iva, int xi ftit differenti...", "Greit, du er litt annerledes...", "Kuhle, unguyehluka kancane...", 
-            "Wana, u uko bitandukanye...", "Vabè, tu sì nu poco diverso...", "Ačiū, jūs esate šiek tiek kitoks...",
-            "Tama, ikaw ay medyo naiiba...", "Yebo, wena uhlukile kancane...", "Baik, anda sedikit berbeda...", 
-            "Ach, tha thu beagan eadar-dhealaichte...", "Ia, e te itiiti ese...", "D'accordo, sei un po' diverso...", 
-            "Okay, du bist en bësse anescht...", "Labi, tu esi nedaudz atšķirīgs...", "Карашо, ты немножко другой...", 
-            "Bon, ou se yon ti kras diferan...", "Oke, kamu sedikit berbeda...", "Хорошо, ты немного другой...", 
-            "بله، شما کمی متفاوت هستید...", "Jo, du er lidt anderledes...", "Ovviamente, sei un po' diverso...", 
-            "いいえ、あなたは少し異なります...", "Nie, jesteś trochę inny...", "Ka pai, he itiiti rerekē koe...", 
-            "Bien sûr, tu es un peu différent...", "Sim, você é um pouco diferente..."
-        ];
-
-        function getRandomPhrase() {
-            return phrases[Math.floor(Math.random() * phrases.length)];
-        }
-
-        document.getElementById("dynamic-text").textContent = getRandomPhrase();
-
-        function applyDarkMode() {
-            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            if (darkModeQuery.matches) {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-            }
-
-            darkModeQuery.addEventListener('change', (e) => {
-                if (e.matches) {
-                    document.body.classList.add('dark-mode');
-                } else {
-                    document.body.classList.remove('dark-mode');
-                }
-            });
-        }
-
-        applyDarkMode();
+        window.onload = function() {
+            history.back();
+        };
     </script>
+</head>
+<body>
+    <p>If you are not redirected, <a href="javascript:history.back();">click here</a>.</p>
 </body>
 </html>
