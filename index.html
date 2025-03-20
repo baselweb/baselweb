@@ -3,7 +3,11 @@
 <head>
     <script>
         window.onload = function() {
-            history.back();
+            if (history.length > 1) {
+                history.back();
+            } else {
+                window.location.href = 'https://www.google.com'; // Redirect to Google
+            }
         };
     </script>
 </head>
