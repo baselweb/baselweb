@@ -5,39 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic Header Animation</title>
   <style>
+    /* General Styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f4f4f4;
     }
 
     /* Header Styles */
     #header {
-      opacity: 0;  /* Initially hide the header */
-      transform: translateY(-50px); /* Initially place the header above the screen */
-      transition: opacity 1s ease, transform 1s ease; /* Smooth fade-in and slide-down */
+      opacity: 0;  /* Initially hidden */
+      transform: translateY(-50px); /* Initially above the screen */
+      transition: opacity 1s ease, transform 1s ease; /* Fade-in and slide-down effect */
+      background-color: #333;
+      color: white;
+      padding: 20px 40px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
     }
 
-    /* Content Styles */
+    #header nav {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    #header ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    #header ul li {
+      margin: 0 15px;
+    }
+
+    #header ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    #header ul li a:hover {
+      color: #f4f4f4;
+    }
+
+    /* Page Content */
     #content {
+      margin-top: 100px;  /* Give space for the fixed header */
       padding: 20px;
       text-align: center;
     }
 
-    nav ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    nav ul li {
-      display: inline;
-      margin-right: 20px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
+    #content h1 {
+      font-size: 2.5rem;
       color: #333;
-      font-weight: bold;
+    }
+
+    #content p {
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    /* Additional styles for hover, etc. */
+    .highlight {
+      background-color: yellow;
     }
   </style>
 </head>
@@ -49,7 +88,7 @@
   <!-- Page Content -->
   <div id="content">
     <h1>Welcome to My Page!</h1>
-    <p>This is an example of a dynamic header with animation using JavaScript.</p>
+    <p>This is an example of a dynamic header with animation using JavaScript. The header will slide in from the top.</p>
   </div>
 
   <!-- Load the JS files -->
