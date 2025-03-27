@@ -10,9 +10,34 @@
       margin: 0;
       padding: 0;
     }
+
+    /* Header Styles */
     #header {
-      opacity: 0; /* Initially hide the header */
-      transition: opacity 1s ease; /* Smooth fade-in transition */
+      opacity: 0;  /* Initially hide the header */
+      transform: translateY(-50px); /* Initially place the header above the screen */
+      transition: opacity 1s ease, transform 1s ease; /* Smooth fade-in and slide-down */
+    }
+
+    /* Content Styles */
+    #content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -21,6 +46,7 @@
   <!-- Dynamic Header Placeholder -->
   <div id="header"></div>
 
+  <!-- Page Content -->
   <div id="content">
     <h1>Welcome to My Page!</h1>
     <p>This is an example of a dynamic header with animation using JavaScript.</p>
