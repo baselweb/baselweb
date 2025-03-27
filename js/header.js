@@ -1,9 +1,10 @@
 // header.js
 document.addEventListener('DOMContentLoaded', () => {
-  // Fade-in effect for the header
   const header = document.getElementById('header');
   
   if (header) {
-    header.style.opacity = 1;  // Make header visible with smooth transition
+    // Make the header visible and slide it down
+    header.style.opacity = 1;   // Fade in
+    header.style.transform = 'translateY(0)';  // Slide from the top
   }
 });
