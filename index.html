@@ -4,81 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic Header Animation</title>
-  <style>
-    /* General Styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
+<style>
+  /* General Styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
 
-    /* Header Styles */
-    #header {
-      opacity: 0;  /* Initially hidden */
-      transform: translateY(-50px); /* Initially above the screen */
-      transition: opacity 1s ease, transform 1s ease; /* Fade-in and slide-down effect */
-      background-color: #333;
-      color: white;
-      padding: 20px 40px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
+  /* Header Styles */
+  #header {
+    opacity: 0;  /* Initially hidden */
+    transform: translateY(-50px); /* Initially above the screen */
+    transition: opacity 1s ease, transform 1s ease; /* Fade-in and slide-down effect */
+    background-color: #333;
+    color: white;
+    padding: 20px 40px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
 
-    #header nav {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+  #header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-    #header ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: space-around;
-    }
+  #header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+  }
 
-    #header ul li {
-      margin: 0 15px;
-    }
+  #header ul li {
+    margin: 0 15px;
+  }
 
-    #header ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
+  #header ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s, transform 0.3s ease;
+  }
 
-    #header ul li a:hover {
-      color: #f4f4f4;
-    }
+  #header ul li a:hover {
+    color: #f4f4f4;
+  }
 
-    /* Page Content */
-    #content {
-      margin-top: 100px;  /* Give space for the fixed header */
-      padding: 20px;
-      text-align: center;
-    }
+  /* Animation for Menu Item Click */
+  #header ul li a.clicked {
+    transform: scale(1.1); /* Scale up the item */
+    background-color: rgba(255, 255, 255, 0.1); /* Add slight background color */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
 
-    #content h1 {
-      font-size: 2.5rem;
-      color: #333;
-    }
+  /* Page Content */
+  #content {
+    margin-top: 100px;  /* Give space for the fixed header */
+    padding: 20px;
+    text-align: center;
+  }
 
-    #content p {
-      font-size: 1.2rem;
-      color: #555;
-    }
+  #content h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
 
-    /* Additional styles for hover, etc. */
-    .highlight {
-      background-color: yellow;
-    }
-  </style>
+  #content p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+
+  /* Additional styles for hover, etc. */
+  .highlight {
+    background-color: yellow;
+  }
+</style>
+
 </head>
 <body>
 
